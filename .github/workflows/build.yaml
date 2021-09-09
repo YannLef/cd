@@ -31,6 +31,6 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     owasp:
-    - uses: sburris/dependency-check-action@master
-      with:
-        Project-Name: TestApp
+        - uses: sburris/dependency-check-action@master
+          with:
+            Project-Name: TestApp
