@@ -49,8 +49,12 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
-        - name: use klar
-          run: |
-            wget https://github.com/optiopay/klar/releases/download/v2.4.0/klar-2.4.0-linux-amd64 -O klar
-            chmod +x klar
-            CLAIR_ADDR=http://clair.3r1.co:6060 ./klar docker.io/zeusxduff/mywebserver:bf466109363ea111a9d020384054e075a2a1dc28f01c34a136506adf0753a2dd
+        - name: Run Trivy vulnerability scanner
+            uses: aquasecurity/trivy-action@master
+            with:
+              image-ref: 'docker.io/zeusxduff/mywebserver:${{ github.sha }}'
+              format: 'table'
+              exit-code: '1'
+              ignore-unfixed: true
+              vuln-type: 'os,library'
+              severity: 'CRITICAL,HIGH'
