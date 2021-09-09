@@ -17,7 +17,7 @@ jobs:
             password: ${{ secrets.DOCKER_PASSWORD }}
             registry: docker.io
             repository: zeusxduff/cd
-            tag: latest
+            tags: latest
     sonarcloud:
         runs-on: ubuntu-latest
         steps:
