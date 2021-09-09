@@ -33,6 +33,10 @@ jobs:
     owasp:
         runs-on: ubuntu-latest
         steps:
+        - uses: actions/checkout@v2
+        - name: Install NPM dependencies
+          run: |
+            npm install --production --unsafe-perm
         - uses: sburris/dependency-check-action@master
           with:
             Project-Name: TestApp
@@ -42,6 +46,3 @@ jobs:
             name: reports
             path: reports
         - uses: actions/checkout@v2
-        - name: Install NPM dependencies
-          run: |
-            npm install --production --unsafe-perm
