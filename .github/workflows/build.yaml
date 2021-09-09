@@ -18,6 +18,7 @@ jobs:
             registry: docker.io
             repository: zeusxduff/cd
             tags: latest
+            #tag_with_sha: true
     sonarcloud:
         runs-on: ubuntu-latest
         steps:
